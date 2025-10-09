@@ -9,12 +9,14 @@ EMPRESTADOS = []
 def hub():
     while True:
         print("\n---BIBLIOTECA---")
-        print("1. ADICIONAR UM NOVO LIVRO")
-        print("2. REMOVER UM LIVRO")
+        print("1. ADICIONAR NOVO LIVRO")
+        print("2. REMOVER LIVRO")
         print("3. LISTAR OS LIVROS DISPONÍVEIS")
-        print("4. REGISTRAR UM NOVO USUÁRIO")
-        print("5. REGISTRAR EMPRÉSTIMO DE LIVRO")
-        print("6. CONSULTAR LIVROS DISPONÍVEIS E EMPRESTADOS")
+        print("4. REGISTRAR NOVO USUÁRIO")
+        print("5. REMOVER USUÁRIO")
+        print("6. LISTAR USUÁRIOS")
+        print("7. REGISTRAR EMPRÉSTIMO DE LIVRO")
+        print("8. CONSULTAR LIVROS DISPONÍVEIS E EMPRESTADOS")
         print("0. SAIR")
         print("---------------")
 
@@ -79,6 +81,32 @@ def hub():
 
         elif opcao == "5":
             print("---------------")
+            print("VOCÊ ESCOLHEU REMOVER UM USUÁRIO!")
+            print("---------------")
+            remover_usuario = input("DIGITE O NOME DO USUÁRIO A SER REMOVIDO:").strip().lower()
+            print("---------------")
+            if remover_usuario not in USUARIOS:
+                print("USUÁRIO NÃO ENCONTRADO!")
+            else:
+                print("USUÁRIO REMOVIDO!")
+                USUARIOS.remove(remover_usuario)
+
+#OPÇÃO 6:
+
+        elif opcao == "6":
+            print("---------------")
+            print("VOCÊ ESCOLHEU LISTAR TODOS OS USUÁRIOS!")
+            print("---------------")
+            if len(USUARIOS) == 0:
+                print("NÃO HÁ USUÁRIOS!")
+            else:
+                for i in range(len(USUARIOS)):
+                    print(f"{i} - {USUARIOS[i].title()}")
+
+#OPÇÃO 7:
+
+        elif opcao == "7":
+            print("---------------")
             print("VOCÊ ESCOLHEU REGISTRAR UM EMPRÉSTIMO!")
             print("---------------")
             livro_emprestado = input("DIGITE O NOME DO LIVRO A SER EMPRESTADO:").strip().lower()
@@ -99,7 +127,7 @@ def hub():
                 print("---------------")
                 print("LIVRO NÃO ENCONTRADO!")
 
-#OPÇÃO 6:
+#OPÇÃO 8:
 
         elif opcao == "6":
             print("---------------")
